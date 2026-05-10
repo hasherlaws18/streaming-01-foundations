@@ -1,5 +1,6 @@
 # streaming-01-foundations
 
+[![Workflow Guide](https://img.shields.io/badge/Pro--Guide-pro--analytics--02-green)](https://denisecase.github.io/pro-analytics-02/workflow-b-apply-example-project/)
 [![Python 3.14](https://img.shields.io/badge/python-3.14%2B-blue?logo=python)](./pyproject.toml)
 [![MIT](https://img.shields.io/badge/license-see%20LICENSE-yellow.svg)](./LICENSE)
 
@@ -119,16 +120,17 @@ code .
 ### In VS Code Terminal 1: Start Kafka (kafka)
 
 For full instructions see
-[start kafka](https://denisecase.github.io/pro-analytics-02/kafka/start-kafka/).
+[**start kafka**](https://denisecase.github.io/pro-analytics-02/kafka/start-kafka/).
 
 If any command fails,
 repeat the steps at
-[install kafka](https://denisecase.github.io/pro-analytics-02/kafka/install-kafka/)
+**[install kafka**](https://denisecase.github.io/pro-analytics-02/kafka/install-kafka/)
 until starting up is reliable.
 
-Open a terminal (if Windows, use **WSL**)
-and run the commands one at a time.
-Rename this terminal to `kafka`.
+Open a new VS Code terminal. Rename it `kafka`.
+If running Windows, specify the terminal type as **wsl** or
+type `wsl`.
+Run the commands one at a time.
 
 Step 1. Verify Java and PATH
 
@@ -163,15 +165,15 @@ bin/kafka-server-start.sh config/server.properties
 ### In VS Code terminal 2: Create Topic (topics)
 
 For full instructions see
-[create topic](https://denisecase.github.io/pro-analytics-02/kafka/create-topic/).
+[**create topic**](https://denisecase.github.io/pro-analytics-02/kafka/create-topic/).
 
-The topic name must match the name given in your
-`.env` file.
-Copy `.env.example` to `.env` to create it.
+The topic name must match the name defined in your
+`.env` file (copy `.env.example` to `.env`).
 
-Open another terminal (if Windows, use **WSL**)
-and run the commands one at a time.
-Rename this terminal to `topics`.
+Open another VS Code terminal. Rename it `topics`.
+If running Windows, specify the terminal type as **wsl** or
+type `wsl`.
+Run the commands one at a time.
 
 ```bash
 cd ~/kafka
@@ -185,9 +187,9 @@ bin/kafka-topics.sh --create \
 
 ### In VS Code Terminal 3: Run Project and Producer (producer)
 
-Open another terminal (if Windows, use **Powershell**)
-and run the commands one at a time.
-Rename this terminal to `producer`.
+Open another VS Code terminal. Rename it `producer`.
+If running Windows, use **PowerShell**.
+Run the commands one at a time.
 
 ```shell
 
@@ -231,10 +233,10 @@ git push -u origin main
 
 ### In VS Code Terminal 4: Run Consumer (consumer)
 
-Open another terminal (if Windows, use **Powershell**)
-and run the commands one at a time
-and start the consumer.
-Rename this terminal to `consumer`.
+Open another VS Code terminal. Rename it `consumer`.
+If running Windows, use **PowerShell**.
+Run the commands one at a time.
+Verify Kafka is reachable, then start the consumer.
 
 ```shell
 clear
@@ -272,34 +274,162 @@ You can split terminals shown below, or just click between them as you like.
 ## Example Producer Output
 
 ```text
-| INFO | P01 |   Sending local message with key=CA-QC
-| INFO | P01 |   MESSAGE SENT  sent=3
-| INFO | P01 | ========================
-| INFO | P01 | SECTION E. Exit
-| INFO | P01 | ========================
-| INFO | P01 | Summary:
-| INFO | P01 |   Sent 3 message(s).
-| INFO | P01 | WROTE TOPIC_CSV = data\output\streaming-01-foundations-case.csv
-| INFO | P01 | ========================
-| INFO | P01 | Producer executed successfully!
-| INFO | P01 | ========================
+| P01 | === RUN START ===
+| P01 | project=P01
+| P01 | repo_dir=streaming-01-foundations
+| P01 | python=3.14.0
+| P01 | os=Windows 11
+| P01 | shell=powershell
+| P01 | cwd=.
+| P01 | github_actions=False
+| P01 | ========================
+| P01 | START producer main()
+| P01 | ========================
+| P01 | ROOT_DIR = .
+| P01 | DATA_DIR = data
+| P01 | SALES_CSV = data\sales.csv
+| P01 | TOPIC_CSV = data\output\streaming-01-foundations-case.csv
+| P01 | ========================
+| P01 | SECTION A. Acquire
+| P01 | ========================
+| P01 | Loading settings from .env...
+| P01 | KAFKA_TOPIC                       = streaming-01-foundations-case
+| P01 | KAFKA_CLEAR_TOPIC_ON_START        = True
+| P01 | PRODUCER_MESSAGE_COUNT            = 3
+| P01 | PRODUCER_MESSAGE_INTERVAL_SECONDS = 2.0
+| P01 | Verifying local source data...
+| P01 | Source file found: sales.csv
+| P01 | Preparing local simulated topic file...
+| P01 | Deleted existing topic file: streaming-01-foundations-case.csv
+| P01 | Topic file will be created: streaming-01-foundations-case.csv
+| P01 | ========================
+| P01 | SECTION P. Produce Messages
+| P01 | ========================
+| P01 | Sending messages...
+| P01 | Sending up to 3 local message(s).
+| P01 | Writing to simulated topic file: streaming-01-foundations-case.csv
+| P01 | Watch each sale arrive. Press CTRL+C to stop early.
+
+| P01 | {
+  order_id: e7324981-a9f0-419f-b708-d0a333451fff
+  datetime: 2026-05-04T08:11:00Z
+  region_id: US-TX
+  currency_code: USD
+  product_id: PY-STREAM-005
+  unit_price: 59.99
+  quantity: 3
+  is_online: true
+  customer_id: CUST-4150
+  is_new_customer: false
+  device_type: tablet
+  payment_method: paypal
+  referral_source: paid_search
+  discount_code:
+  customer_note: Gift for my team
+}
+| P01 |   Sending local message with key=US-TX
+| P01 |   MESSAGE SENT  sent=1
+2026-05-10 07:37:20 | P01 | {
+  order_id: d61943e0-f543-4b5f-9c9a-18605ea4cfe5
+  datetime: 2026-05-04T08:23:00Z
+  region_id: US-TX
+  currency_code: USD
+  product_id: PY-DATA-002
+  unit_price: 49.99
+  quantity: 1
+  is_online: true
+  customer_id: CUST-1106
+  is_new_customer: false
+  device_type: mobile
+  payment_method: paypal
+  referral_source: paid_search
+  discount_code:
+  customer_note: Gift for my team
+}
+2026-05-10 07:37:20 | P01 |   Sending local message with key=US-TX
+2026-05-10 07:37:20 | P01 |   MESSAGE SENT  sent=2
+| P01 | {
+  order_id: 14da1915-8e74-47be-9e10-f7275d31af46
+  datetime: 2026-05-04T08:28:00Z
+  region_id: CA-QC
+  currency_code: CAD
+  product_id: PY-NLP-006
+  unit_price: 54.99
+  quantity: 1
+  is_online: true
+  customer_id: CUST-2133
+  is_new_customer: false
+  device_type: desktop
+  payment_method: paypal
+  referral_source: organic
+  discount_code:
+  customer_note: Learning at my own pace
+}
+| P01 |   Sending local message with key=CA-QC
+| P01 |   MESSAGE SENT  sent=3
+| P01 | ========================
+| P01 | SECTION E. Exit
+| P01 | ========================
+| P01 | Summary:
+| P01 | Sent 3 message(s).
+| P01 | WROTE TOPIC_CSV = data\output\streaming-01-foundations-case.csv
+| P01 | ========================
+| P01 | Producer executed successfully!
+| P01 | ========================
 ```
 
 ## Example Consumer Output
 
 ```text
-| INFO | C01 | MESSAGE CONSUMED
-| INFO | C01 | consumed=3
-| INFO | C01 | No new message received within 10.0s timeout.
-| INFO | C01 | Producer finished or paused. Stopping consumer.
-| INFO | C01 | Saving artifacts...
-| INFO | C01 | WROTE OUTPUT_CSV = data\output\consumed_sales.csv
-| INFO | C01 | ========================
-| INFO | C01 | SECTION E. Exit
-| INFO | C01 | ========================
-| INFO | C01 | Summary:
-| INFO | C01 |   Consumed 3 message(s).
-| INFO | C01 | ========================
-| INFO | C01 | Consumer executed successfully!
-| INFO | C01 | ========================
+| C01 | ========================
+| C01 | START consumer main()
+| C01 | ========================
+| C01 | ROOT_DIR = .
+| C01 | DATA_DIR = data
+| C01 | TOPIC_CSV = data\output\streaming-01-foundations-case.csv
+| C01 | OUTPUT_CSV = data\output\consumed_sales.csv
+| C01 | ========================
+| C01 | SECTION A. Acquire
+| C01 | ========================
+| C01 | Loading settings from .env...
+| C01 | KAFKA_TOPIC                    = streaming-01-foundations-case
+| C01 | CONSUMER_MAX_MESSAGES          = 1000
+| C01 | CONSUMER_POLL_INTERVAL_SECONDS = 0.5
+| C01 | CONSUMER_TIMEOUT_SECONDS       = 10.0
+| C01 | Verifying local simulated topic file...
+| C01 | Topic file found: streaming-01-foundations-case.csv
+| C01 | ========================
+| C01 | SECTION C. Consume and Process Messages
+| C01 | ========================
+| C01 | Initializing output...
+| C01 | Output CSV cleared: consumed_sales.csv
+| C01 | Consuming local messages...
+| C01 | Waiting for up to 1000 message(s).
+| C01 | Stopping after 10.0s with no new message.
+
+| C01 | {'order_id': 'e7324981-a9f0-419f-b708-d0a333451fff', 'datetime': '2026-05-04T08:11:00Z', 'region_id': 'US-TX', 'currency_code': 'USD', 'product_id': 'PY-STREAM-005', 'unit_price': '59.99', 'quantity': '3', 'is_online': 'true', 'customer_id': 'CUST-4150', 'is_new_customer': 'false', 'device_type': 'tablet', 'payment_method': 'paypal', 'referral_source': 'paid_search', 'discount_code': '', 'customer_note': 'Gift for my team'}
+| C01 | Processing raw local message.
+| C01 | MESSAGE CONSUMED
+| C01 | consumed=1
+| C01 | {'order_id': 'd61943e0-f543-4b5f-9c9a-18605ea4cfe5', 'datetime': '2026-05-04T08:23:00Z', 'region_id': 'US-TX', 'currency_code': 'USD', 'product_id': 'PY-DATA-002', 'unit_price': '49.99', 'quantity': '1', 'is_online': 'true', 'customer_id': 'CUST-1106', 'is_new_customer': 'false', 'device_type': 'mobile', 'payment_method': 'paypal', 'referral_source': 'paid_search', 'discount_code': '', 'customer_note': 'Gift for my team'}
+| C01 | Processing raw local message.
+| C01 | MESSAGE CONSUMED
+| C01 | consumed=2
+| C01 | {'order_id': '14da1915-8e74-47be-9e10-f7275d31af46', 'datetime': '2026-05-04T08:28:00Z', 'region_id': 'CA-QC', 'currency_code': 'CAD', 'product_id': 'PY-NLP-006', 'unit_price': '54.99', 'quantity': '1', 'is_online': 'true', 'customer_id': 'CUST-2133', 'is_new_customer': 'false', 'device_type': 'desktop', 'payment_method': 'paypal', 'referral_source': 'organic', 'discount_code': '', 'customer_note': 'Learning at my own pace'}
+| C01 | Processing raw local message.
+| C01 | MESSAGE CONSUMED
+| C01 | consumed=3
+| C01 | No new message received within 10.0s timeout.
+| C01 | Producer finished or paused. Stopping consumer.
+| C01 | Saving artifacts...
+| C01 | WROTE OUTPUT_CSV = data\output\consumed_sales.csv
+| C01 | ========================
+| C01 | SECTION E. Exit
+| C01 | ========================
+| C01 | Summary:
+| C01 | Consumed 3 message(s).
+| C01 | OUTPUT_CSV = data\output\consumed_sales.csv
+| C01 | ========================
+| C01 | Consumer executed successfully!
+| C01 | ========================
 ```

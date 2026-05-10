@@ -224,7 +224,8 @@ def save_artifacts() -> None:
 def log_summary(consumed_count: int) -> None:
     """Log final summary statistics."""
     LOG.info("Summary:")
-    LOG.info(f"  Consumed {consumed_count} message(s).")
+    LOG.info(f"Consumed {consumed_count} message(s).")
+    log_path(LOG, "OUTPUT_CSV", OUTPUT_CSV)
     LOG.info("========================")
     LOG.info("Consumer executed successfully!")
     LOG.info("========================")

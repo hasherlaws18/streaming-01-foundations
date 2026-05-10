@@ -223,7 +223,7 @@ def send_messages() -> int:
 def log_summary(sent_count: int) -> None:
     """Log final summary statistics."""
     LOG.info("Summary:")
-    LOG.info(f"  Sent {sent_count} message(s).")
+    LOG.info(f"Sent {sent_count} message(s).")
     log_path(LOG, "WROTE TOPIC_CSV", TOPIC_CSV)
     LOG.info("========================")
     LOG.info("Producer executed successfully!")
