@@ -178,7 +178,18 @@ def generate_messages(count: int) -> Generator[dict[str, str]]:
     Yields:
         One sale row dictionary at a time.
     """
-    sales_rows = read_csv_rows(SALES_CSV)
+    # Call the function read_csv_rows() to read
+    # all rows from the SALES_CSV file into a list of dictionaries.
+    # A dictionary is a set of key-value pairs,
+    # where the keys are the column names from the CSV file
+    # Note keys and values are all strings when read from CSV.
+    # To use values, we will need to convert them from strings to the appropriate types.
+    sales_rows: list[dict[str, str]] = read_csv_rows(SALES_CSV)
+
+    # Use a generator to yield one sale row at a time, up to the specified count.
+    # In Python, [start:stop] slicing syntax is used to get a subset of a list.
+    # Since we don't provide a start index, it defaults to 0 (the beginning of the list).
+    # So this will start at the first row and yield up to 'count' rows.
     yield from sales_rows[:count]
 
 
@@ -198,7 +209,7 @@ def send_messages() -> int:
     LOG.info(f"Writing to simulated topic file: {TOPIC_CSV.name}")
     LOG.info("Watch each sale arrive. Press CTRL+C to stop early.\n")
 
-    sent_count = 0
+    sent_count: int = 0
 
     try:
         for message in generate_messages(MESSAGE_COUNT):
