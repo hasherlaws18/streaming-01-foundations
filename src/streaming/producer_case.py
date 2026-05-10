@@ -257,7 +257,7 @@ def main() -> None:
     LOG.info("SECTION P. Produce Messages")
     LOG.info("========================")
 
-    sent_count = send_messages()
+    sent_count: int = send_messages()
 
     LOG.info("========================")
     LOG.info("SECTION E. Exit")
