@@ -58,7 +58,6 @@ Thumbs.db
 
 # WHY: Never commit credentials or environment-specific configuration.
 .env
-.env.*
 *.env
 
 # === Documentation build output ===
