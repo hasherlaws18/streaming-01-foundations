@@ -104,6 +104,12 @@ Follow the guide for the **full instructions**.
 <details>
 <summary>Show command reference</summary>
 
+## Change
+
+I changed the default message count and timeout settings so the Kafka consumer
+would process more messages and run longer. This allowed me to observe more
+streaming activity and data flow.
+
 ### In a machine terminal (open in your `Repos` folder)
 
 After you get a copy of this repo in your own GitHub account,
